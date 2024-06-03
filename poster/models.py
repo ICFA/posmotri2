@@ -18,11 +18,15 @@ class Films(models.Model):
 
 class Seances(models.Model):
     title = models.CharField('Название фильма', max_length=50)
-    date_time = models.CharField('Дата время', max_length=20)
+    date_time = models.CharField('Дата и время', max_length=20)
     # geo = models.TextField('Расположение кинотеатра') 
 
     def __str__(self):
-       return f'{self.title}, время {self.date}'
+       return f'{self.title}, {self.date_time}'
+    
+    class Meta:
+        verbose_name = 'Сеанс'
+        verbose_name_plural = 'Сеансы'
 
 class Books(models.Model):
     seanse_number = models.ForeignKey(Seances, on_delete=models.PROTECT)
@@ -32,3 +36,7 @@ class Books(models.Model):
 
     def __str__(self):
        return f'{self.seanse_number}, место {self.seat}, почта {self.mail}'
+    
+    class Meta:
+        verbose_name = 'Заказ'
+        verbose_name_plural = 'Заказы'
