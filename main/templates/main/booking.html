@@ -108,6 +108,12 @@
          Вы заплатите за <span id="count"> </span> билет/а <span id="amount"> </span> рублей
     </p>
 
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Получить письмо">
+    </form>
+
     <h3><a href="afisha.html" style="text-decoration:underline;color: white;">все сеансы</a></h3>
 
 

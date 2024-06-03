@@ -16,12 +16,19 @@ class Films(models.Model):
         verbose_name = 'Фильм'
         verbose_name_plural = 'Фильмы'
 
-class Books(models.Model):
-    title = models.CharField('Название', max_length=50)
-    description = models.TextField('Описание')
-    release_date = models.DateField('Дата релиза')
-    image = models.ImageField('Постер', upload_to='main/static/main/img/')
-    image_url = models.CharField('Ссылка', max_length=50, null=True, blank=True)
+class Seances(models.Model):
+    title = models.CharField('Название фильма', max_length=50)
+    date_time = models.CharField('Дата время', max_length=20)
+    # geo = models.TextField('Расположение кинотеатра') 
 
     def __str__(self):
-       return self.title
+       return f'{self.title}, время {self.date}'
+
+class Books(models.Model):
+    seanse_number = models.ForeignKey(Seances, on_delete=models.PROTECT)
+    seat = models.CharField('Место', max_length=3)
+    mail = models.CharField('Почта', max_length=100)
+    # fio = models.TextField('ФИО пользователя')
+
+    def __str__(self):
+       return f'{self.seanse_number}, место {self.seat}, почта {self.mail}'
