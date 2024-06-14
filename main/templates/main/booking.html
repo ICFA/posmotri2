@@ -28,20 +28,8 @@
             <div class="seat"></div>
             <div class="seat"></div>
             <div class="seat"></div>
-            <div class="seat reserved"></div>
             <div class="seat"></div>
             <div class="seat"></div>
-            <div class="seat reserved"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-        </div>
-        <div class="row">
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat"></div>
-            <div class="seat reserved"></div>
             <div class="seat"></div>
             <div class="seat"></div>
             <div class="seat"></div>
@@ -57,12 +45,24 @@
             <div class="seat"></div>
             <div class="seat"></div>
             <div class="seat"></div>
-            <div class="seat reserved"></div>
-            <div class="seat reserved"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
         </div>
         <div class="row">
-            <div class="seat reserved"></div>
-            <div class="seat reserved"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+            <div class="seat"></div>
+        </div>
+        <div class="row">
+            <div class="seat"></div>
+            <div class="seat"></div>
             <div class="seat"></div>
             <div class="seat"></div>
             <div class="seat"></div>
@@ -73,19 +73,36 @@
             <div class="seat"></div>
         </div>
     </div>
+    <script type="text/javascript">
+        let htmlElements =
+            document.getElementsByClassName("seat");
+        let i = 0;
 
+        while (i < htmlElements.length) {
+            htmlElements[i].innerHTML = i+1;
+            htmlElements[i].style.textAlign = 'center';
+            htmlElements[i].style.color = 'black';
+            // if (htmlElements[i].className != 'seat reserved') {htmlElements[i].style.color = 'white';}
+            i++;
+            }
+    </script>
 
-    <div class="movie-list">
-        <select name="" id="movie">
-            {% for el in films %}
-            <option value="240">{{ el.title }}</option>
-            {% endfor %}
-            <option value="250">Морфий</option>
-            <option value="240">Про уродов и людей</option>
-            <option value="250">Брат-2</option>
-        </select>
-    </div>
+{% for el in bookss %}
+    <p style="display: none;" class={{ el.seanse_number }}>{{ el.seat }}</p>
+{% endfor %}
 
+<p id="aaaa" style="display: none;"></p>
+
+<div class="movie-list">
+    <select name="{{ film.title }}" id="movie">
+        {% for film in filmss %}
+        <option value={{ film.price }}>{{ film.title }}</option>
+        {% endfor %}
+        <!-- <option value="250">Морфий</option>
+        <option value="240">Про уродов и людей</option>
+        <option value="250">Брат-2</option> -->
+    </select>
+</div>
 
     <ul class="info">
         <li>
@@ -113,15 +130,6 @@
         {{ form.as_p }}
         <input type="submit" value="Получить письмо">
     </form>
-
-    <h3><a href="afisha.html" style="text-decoration:underline;color: white;">все сеансы</a></h3>
-
-
-
-
-
-
-
 
 <script src="../../static/main/js/booking_script.js"></script>
 </body>

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os.path
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,8 @@ SECRET_KEY = 'django-insecure-tgla@5hs59w088x$v3c)$(-hvraf@b-lwkvaph*vu$#%zbs*8)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://*', 'http://*', 'https://*.ngrok-free.app', 'http://*.ngrok-free.app']
 
 
 # Application definition
@@ -76,22 +78,18 @@ WSGI_APPLICATION = 'Posmotri.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'posmotr',
-        'USER': 'postgres',
-        'PASSWORD': 'ima8344glhv',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(
+        default='postgres://post:SLbLcuqR7q1ePlLZ8j0rOXUbdnWoHrBf@dpg-cpdgt87109ks73ehei20-a.frankfurt-postgres.render.com/flai_db_lxoj',
+        conn_max_age=600
+    )
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.mail.ru' # gmail.com / mail.ru / etc.
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'mail@mail.ru'
-EMAIL_HOST_PASSWORD = 'password'
+EMAIL_HOST_USER = 'EMAIL_HOST_USER@mail.ru'
+EMAIL_HOST_PASSWORD = 'EMAIL_HOST_PASSWORD'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
