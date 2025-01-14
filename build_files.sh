@@ -1,6 +1,6 @@
 pip install -r require.txt
 
-python manage.py collectstatic --no-input
+# python manage.py collectstatic --no-input
 
 # python manage.py makemigrations
 
